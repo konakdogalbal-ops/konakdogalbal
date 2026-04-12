@@ -19,7 +19,7 @@ body{
   overflow:hidden;
 }
 
-/* ARKAPLAN */
+/* ARKA PLAN */
 body::before{
   content:"";
   position:fixed;
@@ -42,60 +42,40 @@ body::after{
   z-index:-1;
 }
 
-/* BANNER */
-.topBanner{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:55px;
-  background:linear-gradient(90deg,#ff6600,#ffcc00,#ff6600);
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  z-index:999;
-}
-
-.bannerText{
-  white-space:nowrap;
-  font-weight:bold;
-  color:white;
-  padding-left:100%;
-  animation:scroll 18s linear infinite;
-}
-
-@keyframes scroll{
-  0%{transform:translateX(0);}
-  100%{transform:translateX(-100%);}
-}
-
-/* SAYFALAR */
+/* SAYFA */
 .page{
   display:none;
   width:100%;
   height:100%;
-  padding-top:70px;
+  padding-top:60px;
 }
 
-.active{display:flex; justify-content:center; align-items:center; flex-direction:column;}
+.active{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
 
 /* BAŞLIK */
 h1{
   color:white;
   text-shadow:0 0 10px black;
-  font-size:36px;
+  font-size:34px;
   margin-bottom:20px;
 }
 
 /* BUTON */
 .btn{
+  width:260px;
   padding:15px;
-  width:250px;
+  margin:10px;
   border:none;
   border-radius:15px;
-  background:orange;
+  background:linear-gradient(45deg,#ff9900,#ff6600);
   color:white;
   font-weight:bold;
-  margin-top:10px;
+  font-size:18px;
 }
 
 /* ÜRÜNLER */
@@ -106,7 +86,7 @@ h1{
 }
 
 .card{
-  background:rgba(255,255,255,0.8);
+  background:rgba(255,255,255,0.85);
   padding:10px;
   border-radius:15px;
   text-align:center;
@@ -119,55 +99,33 @@ h1{
   border-radius:10px;
 }
 
-/* GÖRSEL SLIDER */
+/* SLIDER */
 .slider img{
   width:300px;
   height:200px;
   object-fit:cover;
   border-radius:15px;
-  margin-bottom:10px;
 }
 
-@media(max-width:800px){
-  .products{grid-template-columns:1fr;}
-}
 </style>
 </head>
 
 <body>
 
-<!-- BANNER -->
-<div class="topBanner">
-  <div class="bannerText">
-    🚚 2000 TL ÜZERİ KARGO BEDAVA 🚚 2000 TL ÜZERİ KARGO BEDAVA 🚚
-  </div>
-</div>
-
 <!-- ANA SAYFA -->
 <div class="page active" id="home">
 
-  <h1>🍯 Konak Doğal Bal Mağazasına Hoşgeldiniz</h1>
+  <h1>🍯 Konak Doğal Bal Mağazası</h1>
 
   <button class="btn" onclick="show('products')">🛒 Ürünlerimiz</button>
   <button class="btn" onclick="show('about')">👤 Biz Kimiz</button>
-
-  <select id="kgSelect" class="btn" onchange="enableOrder()">
-    <option value="">KG Seç</option>
-    <option>1</option><option>2</option><option>3</option>
-    <option>4</option><option>5</option><option>6</option>
-    <option>7</option><option>8</option><option>9</option><option>10</option>
-  </select>
-
-  <button class="btn" id="orderBtn" onclick="order()" style="display:none;">
-    📲 Sipariş Ver
-  </button>
 
 </div>
 
 <!-- ÜRÜNLER -->
 <div class="page" id="products">
 
-  <h1>🛒 Ürünler</h1>
+  <h1>🛒 Ürünlerimiz</h1>
 
   <div class="products">
 
@@ -198,7 +156,23 @@ h1{
 
   </div>
 
+  <select id="kg" class="btn">
+    <option value="">KG Seç</option>
+    <option>1 KG</option>
+    <option>2 KG</option>
+    <option>3 KG</option>
+    <option>4 KG</option>
+    <option>5 KG</option>
+    <option>6 KG</option>
+    <option>7 KG</option>
+    <option>8 KG</option>
+    <option>9 KG</option>
+    <option>10 KG</option>
+  </select>
+
+  <button class="btn" onclick="order()">📲 Sipariş Ver</button>
   <button class="btn" onclick="show('home')">⬅ Geri</button>
+
 </div>
 
 <!-- BİZ KİMİZ -->
@@ -207,37 +181,42 @@ h1{
   <h1>👤 Biz Kimiz</h1>
 
   <div class="slider">
-    <img id="slideImg" src="1.jpg">
+    <img id="img" src="1.jpg">
   </div>
 
-  <button class="btn" onclick="nextImg()">Sonraki ➡</button>
+  <button class="btn" onclick="next()">Sonraki ➡</button>
   <button class="btn" onclick="show('home')">⬅ Geri</button>
 
 </div>
 
 <script>
 
-let images = ["1.jpg","2.jpg","3.jpg"];
-let index = 0;
-
 function show(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-function nextImg(){
-  index = (index + 1) % images.length;
-  document.getElementById("slideImg").src = images[index];
-}
-
-function enableOrder(){
-  let kg = document.getElementById("kgSelect").value;
-  document.getElementById("orderBtn").style.display = kg ? "block" : "none";
-}
-
+/* WHATSAPP SİPARİŞ */
 function order(){
-  let kg = document.getElementById("kgSelect").value;
-  window.open("https://wa.me/905449250253?text=" + kg + " KG bal siparişi", "_blank");
+  let kg = document.getElementById("kg").value;
+  if(!kg){
+    alert("Lütfen KG seç");
+    return;
+  }
+
+  window.open(
+    "https://wa.me/905449250253?text=" + kg + " bal siparişi",
+    "_blank"
+  );
+}
+
+/* SLIDER */
+let imgs=["1.jpg","2.jpg","3.jpg"];
+let i=0;
+
+function next(){
+  i=(i+1)%imgs.length;
+  document.getElementById("img").src=imgs[i];
 }
 
 </script>
