@@ -61,7 +61,7 @@ body::after{
 h1{
   color:white;
   text-shadow:0 0 10px black;
-  font-size:34px;
+  font-size:32px;
   margin-bottom:20px;
 }
 
@@ -69,7 +69,7 @@ h1{
 .btn{
   width:260px;
   padding:15px;
-  margin:10px;
+  margin:8px;
   border:none;
   border-radius:15px;
   background:linear-gradient(45deg,#ff9900,#ff6600);
@@ -78,11 +78,11 @@ h1{
   font-size:18px;
 }
 
-/* ÜRÜNLER */
+/* ÜRÜN KART */
 .products{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:12px;
 }
 
 .card{
@@ -90,13 +90,23 @@ h1{
   padding:10px;
   border-radius:15px;
   text-align:center;
+  cursor:pointer;
+  transition:0.3s;
+  border:3px solid transparent;
 }
 
 .card img{
   width:100%;
-  height:120px;
+  height:110px;
   object-fit:cover;
   border-radius:10px;
+}
+
+/* SEÇİLİNCE YEŞİL ANİMASYON */
+.selected{
+  border:3px solid #00ff66;
+  box-shadow:0 0 15px #00ff66;
+  transform:scale(1.05);
 }
 
 /* SLIDER */
@@ -112,7 +122,7 @@ h1{
 
 <body>
 
-<!-- ANA SAYFA -->
+<!-- ANA -->
 <div class="page active" id="home">
 
   <h1>🍯 Konak Doğal Bal Mağazası</h1>
@@ -125,31 +135,31 @@ h1{
 <!-- ÜRÜNLER -->
 <div class="page" id="products">
 
-  <h1>🛒 Ürünlerimiz</h1>
+  <h1>🛒 Ürün Seç</h1>
 
   <div class="products">
 
-    <div class="card">
+    <div class="card" onclick="selectProduct(this,'Petek Bal')">
       <img src="Petek Bal.jpeg">
       <p>Petek Bal</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="selectProduct(this,'Süzme Bal')">
       <img src="Süzme bal.jpeg">
       <p>Süzme Bal</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="selectProduct(this,'Kara Kovan Balı')">
       <img src="Kara Kovan Balı.jpeg">
       <p>Kara Kovan</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="selectProduct(this,'Doğal Kaya Balı')">
       <img src="Doğal Kaya Balı.jpeg">
       <p>Doğal Kaya</p>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="selectProduct(this,'Yayla Kasnak Balı')">
       <img src="Yayla Kasnak Balı.jpeg">
       <p>Yayla Kasnak</p>
     </div>
@@ -158,16 +168,16 @@ h1{
 
   <select id="kg" class="btn">
     <option value="">KG Seç</option>
-    <option>1 KG</option>
-    <option>2 KG</option>
-    <option>3 KG</option>
-    <option>4 KG</option>
-    <option>5 KG</option>
-    <option>6 KG</option>
-    <option>7 KG</option>
-    <option>8 KG</option>
-    <option>9 KG</option>
-    <option>10 KG</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+    <option>8</option>
+    <option>9</option>
+    <option>10</option>
   </select>
 
   <button class="btn" onclick="order()">📲 Sipariş Ver</button>
@@ -191,21 +201,39 @@ h1{
 
 <script>
 
+let selectedProduct = "";
+
 function show(id){
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
+/* ÜRÜN SEÇİM */
+function selectProduct(el,name){
+  document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
+  el.classList.add("selected");
+  selectedProduct = name;
+}
+
 /* WHATSAPP SİPARİŞ */
 function order(){
+
   let kg = document.getElementById("kg").value;
+
+  if(!selectedProduct){
+    alert("Lütfen ürün seç");
+    return;
+  }
+
   if(!kg){
     alert("Lütfen KG seç");
     return;
   }
 
+  let message = `Merhaba, ${kg} KG ${selectedProduct} siparişi vermek istiyorum.`;
+
   window.open(
-    "https://wa.me/905449250253?text=" + kg + " bal siparişi",
+    "https://wa.me/905449250253?text=" + encodeURIComponent(message),
     "_blank"
   );
 }
