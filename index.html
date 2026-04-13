@@ -30,6 +30,43 @@
       --transition: 240ms ease;
     }
 
+    /* --- Işıklı Bant Ayarları --- */
+    .neon-ticker-wrapper {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(45, 25, 5, 0.85);
+      backdrop-filter: blur(8px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(181, 122, 31, 0.3);
+    }
+    .neon-ticker {
+      display: flex;
+      white-space: nowrap;
+      animation: neon-scroll 25s linear infinite;
+    }
+    .neon-text, .neon-text-highlight {
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0 40px;
+      letter-spacing: 0.5px;
+    }
+    .neon-text { color: #fffaf3; }
+    .neon-text-highlight {
+      color: #ffcc00;
+      text-shadow: 0 0 8px #ffcc00, 0 0 15px #b57a1f;
+    }
+    @keyframes neon-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    /* --- Bitiş --- */
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -70,6 +107,7 @@
 
     /* Header */
     .topbar {
+      margin-top: 40px; /* Yeni bant için açılan boşluk */
       background: linear-gradient(90deg, var(--brand-3), var(--brand), var(--brand-2));
       color: #fff;
       font-size: 0.95rem;
@@ -1322,6 +1360,15 @@ main {
   </style>
 </head>
 <body>
+  <div class="neon-ticker-wrapper">
+    <div class="neon-ticker">
+      <span class="neon-text">✨ Konak Doğal Bal Özel Teklifi: ✨</span>
+      <span class="neon-text-highlight">2000 TL ve Üzeri Alışverişlerde KARGO BEDAVA! 🚚</span>
+      <span class="neon-text">✨ Şifalı Günler Dileriz ✨</span>
+      <span class="neon-text">✨ Konak Doğal Bal Özel Teklifi: ✨</span>
+      <span class="neon-text-highlight">2000 TL ve Üzeri Alışverişlerde KARGO BEDAVA! 🚚</span>
+    </div>
+  </div>
   <a class="skip-link" href="#main">İçeriğe geç</a>
 
   <div class="topbar">
@@ -1365,8 +1412,8 @@ main {
     </div>
   </header>
 
-  <main id="main" style="padding-top: 120px;">
-    <section class="hero" id="hero">
+<main id="main" style="padding-top: 160px;">
+  <section class="hero" id="hero">
       <div class="container hero-grid">
         <article class="hero-card hero-main">
           <div class="eyebrow"> Konak Doğal Bal Mağazası</div>
