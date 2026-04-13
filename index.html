@@ -1,45 +1,2210 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Konak Doğal Bal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Konak Doğal Bal - Doğal bal, karakovan, süzme bal, petek bal ve arı ürünleri için modern e-ticaret web sitesi şablonu." />
+  <title>Konak Doğal Bal | Doğal Bal ve Arı Ürünleri</title>
+  <style>
+    :root {
+      --bg: #fffaf3;
+      --bg-soft: #fff3df;
+      --card: #ffffff;
+      --card-2: #fff9ef;
+      --text: #2d251b;
+      --muted: #6f6254;
+      --line: rgba(116, 86, 43, 0.16);
+      --brand: #b57a1f;
+      --brand-2: #d89c3a;
+      --brand-3: #8f5d12;
+      --ok: #2f8f5b;
+      --warn: #c98a14;
+      --danger: #c94a3a;
+      --shadow: 0 18px 50px rgba(96, 63, 11, 0.10);
+      --shadow-soft: 0 8px 24px rgba(96, 63, 11, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --max: 1320px;
+      --transition: 240ms ease;
+    }
 
-<link rel="stylesheet" href="style.css">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(216, 156, 58, 0.15), transparent 24%),
+        radial-gradient(circle at top right, rgba(181, 122, 31, 0.12), transparent 26%),
+        linear-gradient(180deg, #fffdf8 0%, #fff7ec 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    ::selection { background: rgba(181, 122, 31, 0.18); }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 12px;
+      background: #fff;
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      z-index: 9999;
+    }
+
+    .skip-link:focus { left: 12px; }
+
+    /* Header */
+    .topbar {
+      background: linear-gradient(90deg, var(--brand-3), var(--brand), var(--brand-2));
+      color: #fff;
+      font-size: 0.95rem;
+      padding: 10px 0;
+      letter-spacing: 0.2px;
+    }
+
+    .topbar .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .topbar .pill-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      white-space: nowrap;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 251, 244, 0.72);
+      border-bottom: 1px solid rgba(116, 86, 43, 0.10);
+    }
+
+    .header-inner {
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      min-height: 88px;
+      padding: 10px 0;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .logo-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #f2c76e, #b97b1e);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 20px rgba(181, 122, 31, 0.25);
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .logo-mark::before,
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      inset: 13px 11px auto 11px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      box-shadow: 0 14px 0 rgba(255,255,255,0.78), 0 28px 0 rgba(255,255,255,0.78);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .logo-text strong { font-size: 1.08rem; }
+    .logo-text span { color: var(--muted); font-size: 0.84rem; font-weight: 600; }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      padding: 11px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.96rem;
+      transition: var(--transition);
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: rgba(181, 122, 31, 0.10);
+      color: var(--brand-3);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .icon-btn,
+    .btn {
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .icon-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: #fff;
+      color: var(--text);
+      box-shadow: var(--shadow-soft);
+      display: inline-grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .icon-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+    .cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 0.72rem;
+      display: grid;
+      place-items: center;
+      padding: 0 6px;
+      border: 2px solid #fff;
+    }
+
+    .btn {
+      border-radius: 16px;
+      padding: 13px 18px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(181, 122, 31, 0.24);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(181, 122, 31, 0.28); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.72);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-ghost:hover { transform: translateY(-1px); background: #fff; }
+
+    .menu-btn { display: none; }
+
+    /* Hero */
+    .hero {
+      padding: 34px 0 18px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-card {
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.88), rgba(255,255,255,0.68)),
+        radial-gradient(circle at top right, rgba(216,156,58,0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(181,122,31,0.12), transparent 30%);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-main {
+      padding: 34px;
+      min-height: 520px;
+      display: grid;
+      align-content: center;
+      gap: 22px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(181, 122, 31, 0.10);
+      color: var(--brand-3);
+      font-weight: 800;
+      font-size: 0.94rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 4.6vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: -1.8px;
+      max-width: 12ch;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--brand);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 64ch;
+      font-size: 1.06rem;
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .stat {
+      padding: 16px 14px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    .hero-visual {
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+      grid-template-rows: 1fr auto;
+      min-height: 520px;
+    }
+
+    .visual-panel {
+      border-radius: 28px;
+      background:
+        linear-gradient(160deg, rgba(181, 122, 31, 0.95), rgba(216, 156, 58, 0.88)),
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.25), transparent 18%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      display: grid;
+      align-content: space-between;
+      min-height: 360px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+    }
+
+    .visual-panel::before,
+    .visual-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.09);
+      filter: blur(1px);
+    }
+
+    .visual-panel::before { width: 240px; height: 240px; right: -80px; top: -80px; }
+    .visual-panel::after { width: 300px; height: 300px; left: -120px; bottom: -120px; }
+
+    .visual-label {
+      display: inline-flex;
+      width: fit-content;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .visual-art {
+      display: grid;
+      place-items: center;
+      z-index: 1;
+      min-height: 240px;
+    }
+
+    .jar {
+      width: min(100%, 220px);
+      aspect-ratio: 0.72;
+      border-radius: 36px 36px 30px 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));
+      border: 2px solid rgba(255,255,255,0.26);
+      position: relative;
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 -18px 40px rgba(0,0,0,0.15);
+      display: grid;
+      place-items: end center;
+      padding-bottom: 22px;
+    }
+
+    .jar::before {
+      content: "";
+      position: absolute;
+      width: 72%;
+      height: 64%;
+      bottom: 22px;
+      border-radius: 28px 28px 26px 26px;
+      background: linear-gradient(180deg, #ffd774 0%, #e6a52f 44%, #b96d11 100%);
+      box-shadow: inset 0 18px 26px rgba(255,255,255,0.18), inset 0 -12px 20px rgba(102, 59, 0, 0.24);
+    }
+
+    .jar::after {
+      content: "KONAK";
+      position: absolute;
+      bottom: 94px;
+      left: 50%;
+      transform: translateX(-50%);
+      letter-spacing: 0.28em;
+      font-size: 0.76rem;
+      font-weight: 900;
+      background: rgba(255,255,255,0.92);
+      color: var(--brand-3);
+      padding: 8px 14px;
+      border-radius: 999px;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.12);
+    }
+
+    .visual-foot {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .feature-mini {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 14px;
+      border-radius: 20px;
+      min-height: 84px;
+    }
+
+    .feature-mini strong { display: block; margin-bottom: 6px; }
+    .feature-mini span { color: rgba(255,255,255,0.84); font-size: 0.92rem; line-height: 1.45; }
+
+    /* Sections */
+    section {
+      padding: 22px 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 2.4vw, 2.6rem);
+      letter-spacing: -0.8px;
+    }
+
+    .section-header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 70ch;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(181, 122, 31, 0.10);
+      color: var(--brand-3);
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    /* Filter bar */
+    .filter-shell {
+      position: sticky;
+      top: 96px;
+      z-index: 900;
+      margin-bottom: 16px;
+      padding: 12px;
+      border-radius: 24px;
+      background: rgba(255, 251, 244, 0.82);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr 0.8fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .input,
+    .select {
+      width: 100%;
+      border: 1px solid rgba(116, 86, 43, 0.16);
+      background: #fff;
+      color: var(--text);
+      border-radius: 16px;
+      padding: 14px 16px;
+      outline: none;
+      transition: var(--transition);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .input:focus,
+    .select:focus {
+      border-color: rgba(181,122,31,0.45);
+      box-shadow: 0 0 0 4px rgba(181, 122, 31, 0.10);
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .chip {
+      border: 1px solid rgba(116, 86, 43, 0.16);
+      background: rgba(255,255,255,0.8);
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .chip:hover,
+    .chip.active {
+      background: rgba(181, 122, 31, 0.12);
+      color: var(--brand-3);
+      border-color: rgba(181, 122, 31, 0.28);
+      transform: translateY(-1px);
+    }
+
+    /* Product grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      grid-column: span 3;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,250,242,0.96));
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      box-shadow: var(--shadow-soft);
+      border-radius: 28px;
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+    .product-media {
+      aspect-ratio: 1.15;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.34), transparent 22%),
+        linear-gradient(145deg, #f5dfac, #d79c3b 55%, #9b6120);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .placeholder-jar {
+      width: 58%;
+      height: 74%;
+      border-radius: 28px 28px 24px 24px;
+      background: rgba(255,255,255,0.14);
+      border: 2px solid rgba(255,255,255,0.30);
+      backdrop-filter: blur(6px);
+      position: relative;
+      box-shadow: inset 0 -18px 24px rgba(0,0,0,0.12);
+    }
+
+    .placeholder-jar::before {
+      content: "";
+      position: absolute;
+      inset: 16% 12% 12% 12%;
+      border-radius: 24px 24px 20px 20px;
+      background: linear-gradient(180deg, #fff0b8 0%, #efb53a 42%, #bb7413 100%);
+      box-shadow: inset 0 20px 30px rgba(255,255,255,0.16), inset 0 -12px 18px rgba(96, 56, 0, 0.26);
+    }
+
+    .placeholder-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.82);
+      color: var(--brand-3);
+      border-radius: 16px;
+      padding: 10px 12px;
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 0.16em;
+    }
+
+    .product-body {
+      padding: 16px 16px 18px;
+      display: grid;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .product-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      width: fit-content;
+    }
+
+    .badge.ok { background: rgba(47,143,91,0.12); color: var(--ok); }
+    .badge.brand { background: rgba(181,122,31,0.12); color: var(--brand-3); }
+    .badge.warn { background: rgba(201,138,20,0.12); color: var(--warn); }
+
+    .product-body h3 {
+      margin: 0;
+      font-size: 1.12rem;
+      line-height: 1.4;
+    }
+
+    .product-body p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.96rem;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .price {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .price strong {
+      font-size: 1.18rem;
+      color: var(--text);
+    }
+
+    .price span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .btn-small {
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-size: 0.92rem;
+    }
+
+    /* Split content blocks */
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      padding: 22px;
+    }
+
+    .info-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+    }
+
+    .info-card p,
+    .info-card li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .step strong {
+      display: inline-flex;
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      background: rgba(181,122,31,0.12);
+      color: var(--brand-3);
+      font-weight: 900;
+    }
+
+    .step h4 { margin: 0 0 8px; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.7; }
+
+    /* Testimonials */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .quote-card {
+      padding: 22px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .quote-card p {
+      margin: 0 0 14px;
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .quote-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f4c76e, #c37c16);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .quote-meta strong { display: block; }
+    .quote-meta span { color: var(--muted); font-size: 0.9rem; }
+
+    /* FAQ */
+    .faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 18px 18px;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      cursor: pointer;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition);
+      padding: 0 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 220px;
+      padding-bottom: 18px;
+    }
+
+    .faq-item.open .chev { transform: rotate(180deg); }
+    .chev { transition: var(--transition); }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 18px;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      padding: 22px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 250, 241, 0.72);
+      border: 1px solid rgba(116, 86, 43, 0.08);
+    }
+
+    .contact-item strong { display: block; margin-bottom: 4px; }
+    .contact-item span { color: var(--muted); line-height: 1.7; }
+
+    .form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .helper {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 26px;
+      background: linear-gradient(180deg, #2d2114 0%, #1f160d 100%);
+      color: rgba(255,255,255,0.88);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(216,156,58,0.18), transparent 18%),
+        radial-gradient(circle at 80% 10%, rgba(181,122,31,0.12), transparent 18%),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.04), transparent 24%);
+      pointer-events: none;
+    }
+
+    .footer-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr 0.9fr;
+      gap: 18px;
+      padding: 34px 0;
+    }
+
+    .footer h4 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: 1.08rem;
+    }
+
+    .footer p, .footer a, .footer li {
+      color: rgba(255,255,255,0.74);
+      line-height: 1.8;
+      font-size: 0.96rem;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-bottom {
+      position: relative;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding: 16px 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Cart drawer */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(25, 18, 10, 0.44);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      z-index: 1400;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      right: -420px;
+      top: 0;
+      height: 100vh;
+      width: min(420px, calc(100vw - 34px));
+      background: #fffaf2;
+      box-shadow: -26px 0 60px rgba(0,0,0,0.16);
+      z-index: 1500;
+      transition: right 280ms ease;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .drawer.open { right: 0; }
+
+    .drawer-head,
+    .drawer-foot {
+      padding: 18px;
+      border-bottom: 1px solid rgba(116, 86, 43, 0.10);
+    }
+
+    .drawer-foot {
+      border-top: 1px solid rgba(116, 86, 43, 0.10);
+      border-bottom: 0;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .drawer-head h3 { margin: 0; }
+
+    .drawer-body {
+      padding: 12px 18px 18px;
+      overflow: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .cart-item {
+      background: #fff;
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      border-radius: 20px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 76px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cart-thumb {
+      width: 76px;
+      aspect-ratio: 1;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #f7dfaa, #d49c3a 60%, #995f1f);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cart-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 14px 18px 10px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.24);
+    }
+
+    .cart-title { margin: 0 0 6px; font-weight: 800; }
+    .cart-sub { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+
+    .qty {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(116, 86, 43, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .qty button {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .qty span { min-width: 30px; text-align: center; font-weight: 800; }
+
+    .cart-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .total-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .total-row strong { font-size: 1.2rem; }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1600;
+      background: rgba(22, 17, 10, 0.50);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+
+    .modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: min(920px, 100%);
+      background: #fffdf7;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(116, 86, 43, 0.10);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .modal-media {
+      min-height: 100%;
+      background: linear-gradient(145deg, #f6ddb0, #d69a38 55%, #996120);
+      padding: 26px;
+      display: grid;
+      place-items: center;
+    }
+
+    .modal-media .big-jar {
+      width: min(100%, 320px);
+      aspect-ratio: 0.78;
+      border-radius: 42px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.26);
+      position: relative;
+      box-shadow: inset 0 -18px 32px rgba(0,0,0,0.14);
+    }
+
+    .modal-media .big-jar::before {
+      content: "";
+      position: absolute;
+      inset: 18% 13% 12% 13%;
+      border-radius: 30px;
+      background: linear-gradient(180deg, #fff1bd 0%, #f0b23d 42%, #b96f12 100%);
+      box-shadow: inset 0 20px 30px rgba(255,255,255,0.18), inset 0 -12px 18px rgba(96, 56, 0, 0.24);
+    }
+
+    .modal-body {
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      z-index: 2;
+    }
+
+    .modal-top {
+      position: relative;
+    }
+
+    .modal-body h3 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    .modal-body .desc {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .spec {
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(116, 86, 43, 0.10);
+    }
+
+    .spec span { display: block; color: var(--muted); font-size: 0.86rem; }
+    .spec strong { display: block; margin-top: 4px; }
+
+    /* Responsive */
+    @media (max-width: 1180px) {
+      .header-inner { grid-template-columns: 220px 1fr; }
+      .header-actions { grid-column: 1 / -1; justify-content: space-between; }
+      .hero-grid, .split, .contact-grid, .modal-card { grid-template-columns: 1fr; }
+      .product-card { grid-column: span 4; }
+      .testimonial-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 920px) {
+      .nav {
+        display: none;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        top: 100%;
+        background: rgba(255,255,255,0.98);
+        border: 1px solid rgba(116, 86, 43, 0.10);
+        border-radius: 22px;
+        padding: 12px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .nav.open { display: flex; }
+      .menu-btn { display: inline-grid; }
+      .header-inner { grid-template-columns: 1fr auto; position: relative; }
+      .hero-stats, .process, .filters, .visual-foot, .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .product-card { grid-column: span 6; }
+      .hero-main, .hero-visual { min-height: auto; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar .row { justify-content: center; text-align: center; }
+      .header-inner { gap: 12px; }
+      .logo-text strong { font-size: 1rem; }
+      .hero { padding-top: 18px; }
+      .hero-main { padding: 22px; }
+      .hero h1 { max-width: 10ch; }
+      .hero-stats, .process, .testimonial-grid, .form-row, .filters, .visual-foot, .specs { grid-template-columns: 1fr; }
+      .product-card { grid-column: span 12; }
+      .visual-panel { min-height: 330px; }
+      .hero-card, .info-card, .contact-card { border-radius: 24px; }
+      .filter-shell { top: 90px; }
+      .cart-item { grid-template-columns: 70px 1fr; }
+      .cart-item .right { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; }
+    }
+
+    /* Tiny utilities */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .muted { color: var(--muted); }
+    .grid-gap { gap: 18px; }
+  </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#main">İçeriğe geç</a>
 
-<!-- 🔥 ÜST KAYAN BAR -->
-<div class="top-bar">
-  <div class="top-track">
-    🚚 2000 TL ve üzeri KARGO BEDAVA 🚚
+  <div class="topbar">
+    <div class="container row">
+      <div class="pill-group">
+        <div class="pill">🌿 %100 Doğal Ürünler</div>
+        <div class="pill">🚚 Hızlı Kargo Altyapısı</div>
+        <div class="pill">🔒 Güvenli Sipariş Sistemi</div>
+      </div>
+      <div class="pill">📞 Sipariş / Destek: 0 (5xx) xxx xx xx</div>
+    </div>
   </div>
-</div>
 
-<!-- 🔝 HEADER -->
-<header class="header">
-  <h1>🍯 Konak Doğal Bal</h1>
-  <button onclick="scrollToProducts()">Ürünlerimiz</button>
-</header>
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="#hero" aria-label="Konak Doğal Bal ana sayfa">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="logo-text">
+          <strong>Konak Doğal Bal</strong>
+          <span>Doğal üretim • Bal ve arı ürünleri</span>
+        </div>
+      </a>
 
-<!-- 🎯 HERO -->
-<section class="hero">
-  <h2>Doğanın En Saf Hali</h2>
-  <p>Katkısız • Gerçek • Güvenilir</p>
-  <button onclick="scrollToProducts()">Alışverişe Başla</button>
-</section>
+      <nav class="nav" id="nav">
+        <a href="#products" class="active">Ürünler</a>
+        <a href="#about">Hakkımızda</a>
+        <a href="#process">Süreç</a>
+        <a href="#reviews">Yorumlar</a>
+        <a href="#faq">S.S.S.</a>
+        <a href="#contact">İletişim</a>
+      </nav>
 
-<!-- 🛒 ÜRÜNLER -->
-<section id="products" class="products"></section>
+      <div class="header-actions">
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menüyü aç/kapat">☰</button>
+        <button class="icon-btn" id="searchBtn" aria-label="Arama kutusunu odakla">⌕</button>
+        <button class="icon-btn" id="cartBtn" aria-label="Sepeti aç">
+          🛒
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-<!-- 📲 WHATSAPP BAR -->
-<div class="whatsapp-bar" onclick="orderNow()">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-  Sipariş Ver
-</div>
+  <main id="main">
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <article class="hero-card hero-main">
+          <div class="eyebrow">🍯 Konak Doğal Bal koleksiyonu</div>
+          <h1>
+            Doğanın özünü
+            <span>tek bir sayfada topla.</span>
+          </h1>
+          <p>
+            Bu şablon, Konak Doğal Bal için hazırlanmış modern bir e-ticaret ana sayfasıdır.
+            Ürün görselleri, fiyatlar, açıklamalar ve içerik alanları sonradan kolayca doldurulacak şekilde
+            tasarlanmıştır. Menü, ürün filtreleri, ürün kartları, sepet paneli, FAQ açılır alanları ve iletişim
+            formu dahil edilir.
+          </p>
+          <div class="hero-actions">
+            <a href="#products" class="btn btn-primary">Ürünleri İncele</a>
+            <a href="#contact" class="btn btn-ghost">Teklif / İletişim</a>
+          </div>
 
-<script src="app.js"></script>
+          <div class="hero-stats" aria-label="Öne çıkan istatistikler">
+            <div class="stat">
+              <strong>12+</strong>
+              <span>Ürün kategorisi için hazır yapı</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Responsive uyumlu tasarım</span>
+            </div>
+            <div class="stat">
+              <strong>1 dosya</strong>
+              <span>HTML + CSS + JS tek dosyada</span>
+            </div>
+            <div class="stat">
+              <strong>Sepet</strong>
+              <span>Demo sepet ve adet kontrolü</span>
+            </div>
+          </div>
+        </article>
 
+        <aside class="hero-card hero-visual">
+          <div class="visual-panel">
+            <div class="visual-label">🐝 Doğal üretim şablonu</div>
+            <div class="visual-art">
+              <div class="jar" aria-hidden="true"></div>
+            </div>
+            <div class="visual-foot">
+              <div class="feature-mini">
+                <strong>Katkısız içerik</strong>
+                <span>Ürün açıklamaları, sertifikalar ve analiz alanları için hazır bloklar.</span>
+              </div>
+              <div class="feature-mini">
+                <strong>Kargo akışı</strong>
+                <span>Sipariş sonrası bilgilendirme ve teslimat süreci alanları dahil.</span>
+              </div>
+              <div class="feature-mini">
+                <strong>Kurumsal görünüm</strong>
+                <span>Bal markasına uygun sıcak renk paleti ve premium kart tasarımı.</span>
+              </div>
+            </div>
+          </div>
+          <div class="pill" style="justify-content:center; text-align:center;">
+            ⭐ Ürün alanları boş bırakılabilir; görsel ve metinler sonradan eklenebilir.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-badge">Ürün vitrini</div>
+            <h2>Ürün Kategorileri ve Kartlar</h2>
+            <p>
+              Filtrelenebilir ürün alanı. Aşağıdaki kartlar örnek olarak yerleştirildi; gerçek ürün isimleri,
+              görselleri ve fiyatlar kolayca değiştirilebilir.
+            </p>
+          </div>
+          <a href="#contact" class="btn btn-primary">Özel Sipariş Alanı</a>
+        </div>
+
+        <div class="filter-shell">
+          <div class="filters">
+            <input class="input" id="searchInput" type="search" placeholder="Ürün ara: süzme bal, karakovan, petek..." />
+            <select class="select" id="categorySelect">
+              <option value="all">Tüm Kategoriler</option>
+              <option value="suzme">Süzme Bal</option>
+              <option value="karakovan">Karakovan</option>
+              <option value="petekli">Petekli Bal</option>
+              <option value="paket">Avantajlı Paket</option>
+              <option value="urun">Arı Ürünü</option>
+            </select>
+            <select class="select" id="sortSelect">
+              <option value="featured">Öne çıkanlar</option>
+              <option value="name">Ada göre</option>
+              <option value="priceLow">Fiyat: düşükten yükseğe</option>
+              <option value="priceHigh">Fiyat: yüksekten düşüğe</option>
+            </select>
+            <button class="btn btn-ghost" id="resetFilters">Filtreleri Sıfırla</button>
+          </div>
+          <div class="chips" id="chipBar">
+            <button class="chip active" data-chip="all">Tümü</button>
+            <button class="chip" data-chip="suzme">Süzme</button>
+            <button class="chip" data-chip="karakovan">Karakovan</button>
+            <button class="chip" data-chip="petekli">Petekli</button>
+            <button class="chip" data-chip="paket">Paket</button>
+            <button class="chip" data-chip="urun">Arı Ürünü</button>
+          </div>
+        </div>
+
+        <div class="grid" id="productGrid" aria-live="polite">
+          <article class="product-card" data-name="Konak Süzme Bal" data-category="suzme" data-price="340">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">SÜZME BAL</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge ok">Doğal</span>
+                <span class="badge brand">1 KG</span>
+              </div>
+              <h3>Konak Süzme Bal</h3>
+              <p>Burada ürünün bölgesi, aroması, çiçek florası, analiz raporu ve kullanım önerileri yer alabilir.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺340</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Süzme Bal" data-price="340">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Konak Karakovan Bal" data-category="karakovan" data-price="520">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">KARAKOVAN</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge ok">Katkısız</span>
+                <span class="badge warn">Özel Seri</span>
+              </div>
+              <h3>Konak Karakovan Bal</h3>
+              <p>Yüksek kalite, yoğun kıvam ve doğal aroma için hazırlanmış detaylı ürün sayfası örneği.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺520</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Karakovan Bal" data-price="520">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Konak Petekli Bal" data-category="petekli" data-price="410">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">PETEKLİ BAL</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge brand">Popüler</span>
+                <span class="badge ok">Doğal petek</span>
+              </div>
+              <h3>Konak Petekli Bal</h3>
+              <p>Ürün özellikleri, gramaj seçeneği, saklama koşulları ve teslimat bilgileri için kart yapısı hazır.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺410</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Petekli Bal" data-price="410">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Konak Arı Poleni" data-category="urun" data-price="260">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">POLEN</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge warn">Arı ürünü</span>
+                <span class="badge ok">Taze</span>
+              </div>
+              <h3>Konak Arı Poleni</h3>
+              <p>Arı ürünleri için ayrı kategori, filtre, açıklama ve kullanım önerileri alanları eklenmiştir.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺260</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Arı Poleni" data-price="260">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Konak Propolis" data-category="urun" data-price="290">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">PROPOLİS</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge brand">Konsantre</span>
+                <span class="badge ok">Arı ürünü</span>
+              </div>
+              <h3>Konak Propolis</h3>
+              <p>Kurumsal ürün kartları için açık bırakılmış metin alanları, görseller ve ek bilgi blokları mevcut.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺290</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Propolis" data-price="290">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Konak Bal Paketi" data-category="paket" data-price="990">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">PAKET</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge warn">Avantajlı</span>
+                <span class="badge brand">Set</span>
+              </div>
+              <h3>Konak Bal Paketi</h3>
+              <p>Birden fazla ürünü tek sepet altında gösteren paket yapısı, kampanya alanı ile birlikte kullanılabilir.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺990</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Bal Paketi" data-price="990">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Konak Çiçek Balı" data-category="suzme" data-price="315">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">ÇİÇEK BALI</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge ok">Hafif aroma</span>
+                <span class="badge brand">1 KG</span>
+              </div>
+              <h3>Konak Çiçek Balı</h3>
+              <p>Ürün açıklamalarında çiçek florası, kıvam, renk, saklama ve servis önerileri için alan mevcuttur.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺315</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Çiçek Balı" data-price="315">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card" data-name="Konak Yayla Balı" data-category="suzme" data-price="360">
+            <div class="product-media">
+              <div class="placeholder-jar"><div class="placeholder-tag">YAYLA BALI</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge warn">Yüksek rakım</span>
+                <span class="badge ok">Doğal</span>
+              </div>
+              <h3>Konak Yayla Balı</h3>
+              <p>Yayla balı için ek açıklama, üretim bilgisi, hasat dönemi ve laboratuvar notları eklenebilir.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺360</strong><span>Boş fiyat alanı</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Konak Yayla Balı" data-price="360">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-badge">Marka hikâyesi</div>
+            <h2>Hakkımızda Alanı</h2>
+            <p>Bu bölümde marka hikâyesi, üretim yaklaşımı, kalite vurgusu ve güven unsurları gösterilir.</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="info-card">
+            <h3>Konak Doğal Bal için kurumsal sayfa yapısı</h3>
+            <p>
+              Markanın doğallık, güven ve şeffaflık mesajını öne çıkaran açıklama alanı. Buraya çiftlik bilgisi,
+              hasat süreci, analizler, paketleme yöntemi, satış politikası ve müşteri memnuniyeti metinleri yerleştirilebilir.
+            </p>
+            <ul class="list">
+              <li>Firma tanıtımı</li>
+              <li>Üretim ve hasat süreci</li>
+              <li>Kalite kontrol ve analiz bilgileri</li>
+              <li>Ambalajlama ve kargo süreci</li>
+              <li>İade / değişim politikası</li>
+            </ul>
+          </div>
+
+          <div class="info-card stack">
+            <h3>Öne çıkan güven unsurları</h3>
+            <div class="grid grid-gap" style="grid-template-columns: repeat(2, minmax(0,1fr));">
+              <div class="step">
+                <strong>01</strong>
+                <h4>Şeffaf içerik</h4>
+                <p>Her ürün kartı için açıklama ve içerik alanı hazır.</p>
+              </div>
+              <div class="step">
+                <strong>02</strong>
+                <h4>Marka vurgusu</h4>
+                <p>Logo, renk paleti ve tipografi bal sektörüne uygun.</p>
+              </div>
+              <div class="step">
+                <strong>03</strong>
+                <h4>Kolay yönetim</h4>
+                <p>Tek dosya içinde ürünleri değiştirmek kolaydır.</p>
+              </div>
+              <div class="step">
+                <strong>04</strong>
+                <h4>Mobil uyum</h4>
+                <p>Telefon ve tablet ekranlarına otomatik uyum sağlar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-badge">Sipariş akışı</div>
+            <h2>Sipariş ve Teslimat Süreci</h2>
+            <p>Bir müşteri ürün seçtiğinde, sepet, onay ve teslimat aşamalarını anlatan bir akış kullanılır.</p>
+          </div>
+        </div>
+
+        <div class="process">
+          <div class="step">
+            <strong>1</strong>
+            <h4>Ürün seç</h4>
+            <p>Kullanıcı kategori filtreleriyle ürünü bulur ve detay modalını açar.</p>
+          </div>
+          <div class="step">
+            <strong>2</strong>
+            <h4>Sepete ekle</h4>
+            <p>Adet artırma / azaltma ve toplam fiyat hesaplama sistemi devreye girer.</p>
+          </div>
+          <div class="step">
+            <strong>3</strong>
+            <h4>Bilgi gönder</h4>
+            <p>İletişim formu veya WhatsApp butonu ile sipariş bilgisi iletilir.</p>
+          </div>
+          <div class="step">
+            <strong>4</strong>
+            <h4>Teslim et</h4>
+            <p>Kargo ve teslimat alanı, kullanıcıya net süreç bilgisi sunar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-badge">Müşteri yorumları</div>
+            <h2>Referans / Yorum Bloğu</h2>
+            <p>Gerçek yorumlar daha sonra eklenebilir; şimdilik tasarımın nasıl görüneceğini gösterir.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="quote-card">
+            <p>“Sayfa çok düzenli, ürünler net görünüyor. Bal markası için premium ve sıcak bir his veriyor.”</p>
+            <div class="quote-meta">
+              <div class="avatar">A</div>
+              <div><strong>Ayşe K.</strong><span>İstanbul</span></div>
+            </div>
+          </div>
+          <div class="quote-card">
+            <p>“Sepet sistemi ve filtreler hazır gelmesi büyük avantaj. Sonradan ürün eklemek kolay olur.”</p>
+            <div class="quote-meta">
+              <div class="avatar">M</div>
+              <div><strong>Mehmet T.</strong><span>Ankara</span></div>
+            </div>
+          </div>
+          <div class="quote-card">
+            <p>“Mobilde de rahat kullanılıyor. Özellikle ürün kartları ve renk seçimi çok iyi düşünülmüş.”</p>
+            <div class="quote-meta">
+              <div class="avatar">E</div>
+              <div><strong>Elif S.</strong><span>İzmir</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-badge">Sık sorulan sorular</div>
+            <h2>FAQ Alanı</h2>
+            <p>Bal satışı yapan bir site için en kritik bilgi alanları burada toparlanır.</p>
+          </div>
+        </div>
+
+        <div class="faq" id="faqList">
+          <div class="faq-item">
+            <button class="faq-q">Ürün içerikleri ve gramajlar sonradan eklenebilir mi? <span class="chev">⌄</span></button>
+            <div class="faq-a">Evet. Her ürün kartında başlık, açıklama, fiyat, badge ve buton ayrı bir alan olarak düzenlendiği için sonradan kolayca güncellenebilir.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Bu yapı tek HTML dosyasında çalışır mı? <span class="chev">⌄</span></button>
+            <div class="faq-a">Evet. İçindeki CSS ve JavaScript ile birlikte tek dosya olarak kullanılabilir. Daha sonra parçalara ayrılıp profesyonel projeye dönüştürülebilir.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Sepet gerçek ödeme sistemine bağlanabilir mi? <span class="chev">⌄</span></button>
+            <div class="faq-a">Evet. Bu demo yapı ödeme API’leri, WhatsApp sipariş sistemi veya panel tabanlı satış akışıyla bağlanabilir.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Görselleri ve metinleri boş bırakabilir miyim? <span class="chev">⌄</span></button>
+            <div class="faq-a">Evet. Şu anki şablon özellikle doldurulmamış alanlar için hazırlanmıştır. Sonradan ürün fotoğrafı ve metinleri eklemek çok kolaydır.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-badge">İletişim</div>
+            <h2>Teklif ve Sipariş İletişim Alanı</h2>
+            <p>Bu bölüm, telefon, adres, WhatsApp veya form üzerinden sipariş toplamak için hazırlanmıştır.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>İletişim Bilgileri</h3>
+            <p class="helper">Gerçek firma bilgileri buraya yerleştirilebilir. Ayrıca harita embed alanı da eklenebilir.</p>
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="avatar">☎</div>
+                <div>
+                  <strong>Telefon</strong>
+                  <span>0 (5xx) xxx xx xx</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="avatar">✉</div>
+                <div>
+                  <strong>E-posta</strong>
+                  <span>info@konakdogalbal.com</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="avatar">⌂</div>
+                <div>
+                  <strong>Adres</strong>
+                  <span>Konak Doğal Bal üretim / satış adresi buraya yazılacak.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>İletişim Formu</h3>
+            <p class="helper">Bu form demo amaçlıdır. İstenirse WhatsApp mesajına veya e-posta gönderimine bağlanabilir.</p>
+            <form class="form" id="contactForm">
+              <div class="form-row">
+                <input class="input" type="text" placeholder="Ad Soyad" required />
+                <input class="input" type="tel" placeholder="Telefon" required />
+              </div>
+              <div class="form-row">
+                <input class="input" type="email" placeholder="E-posta" />
+                <select class="select" required>
+                  <option value="">Konu seçin</option>
+                  <option>Sipariş</option>
+                  <option>Toptan satış</option>
+                  <option>Kurumsal teklif</option>
+                  <option>Destek</option>
+                </select>
+              </div>
+              <textarea class="input textarea" placeholder="Mesajınızı yazın..."></textarea>
+              <button class="btn btn-primary" type="submit">Mesajı Gönder</button>
+              <div class="helper">Not: Bu alan şimdilik kullanıcı arayüzüdür. Gerçek gönderim için sunucu tarafı veya servis bağlantısı eklenmelidir.</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <h4>Konak Doğal Bal</h4>
+        <p>
+          Doğal bal ürünleri için hazırlanmış modern bir web sitesi iskeleti. Ürün vitrininden iletişim alanına,
+          sepetten FAQ bölümüne kadar genişletilmiş bir yapı içerir.
+        </p>
+      </div>
+      <div>
+        <h4>Hızlı linkler</h4>
+        <ul>
+          <li><a href="#products">Ürünler</a></li>
+          <li><a href="#about">Hakkımızda</a></li>
+          <li><a href="#process">Süreç</a></li>
+          <li><a href="#contact">İletişim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="#faq">Sık Sorulan Sorular</a></li>
+          <li><a href="#reviews">Müşteri Yorumları</a></li>
+          <li><a href="#hero">Ana Sayfa</a></li>
+          <li><a href="#">Gizlilik Politikası</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Notlar</h4>
+        <p>
+          Görseller, fiyatlar ve ürün adları sonradan düzenlenebilir. Bu dosya, hem içerik hem de tasarım açısından
+          güçlü bir başlangıç noktasıdır.
+        </p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Konak Doğal Bal. Tüm hakları saklıdır.</p>
+      <p>Hazır yapı: HTML • CSS • JavaScript</p>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+
+  <aside class="drawer" id="drawer" aria-label="Sepet paneli">
+    <div class="drawer-head">
+      <h3>Sepet</h3>
+      <button class="icon-btn" id="closeCart" aria-label="Sepeti kapat">✕</button>
+    </div>
+    <div class="drawer-body" id="cartItems">
+      <p class="muted">Sepet boş. Ürün kartlarından ürün ekleyin.</p>
+    </div>
+    <div class="drawer-foot">
+      <div class="total-row">
+        <span>Toplam</span>
+        <strong id="cartTotal">₺0</strong>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-primary" id="checkoutBtn">Sipariş Özeti Oluştur</button>
+        <button class="btn btn-ghost" id="clearCartBtn">Sepeti Temizle</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal-card modal-top">
+      <button class="icon-btn modal-close" id="closeModal" aria-label="Pencereyi kapat">✕</button>
+      <div class="modal-media">
+        <div class="big-jar"></div>
+      </div>
+      <div class="modal-body">
+        <span class="badge brand" id="modalBadge">Ürün Detayı</span>
+        <h3 id="modalTitle">Ürün Başlığı</h3>
+        <p class="desc" id="modalDesc">
+          Ürün açıklaması burada görünecek.
+        </p>
+        <div class="specs">
+          <div class="spec"><span>Kategori</span><strong id="modalCategory">-</strong></div>
+          <div class="spec"><span>Fiyat</span><strong id="modalPrice">-</strong></div>
+          <div class="spec"><span>Gramaj</span><strong>Boş alan</strong></div>
+          <div class="spec"><span>Stok</span><strong>Boş alan</strong></div>
+        </div>
+        <p class="helper">
+          Bu alan ürün detay modalı olarak kullanılır. İçeriğe analiz bilgisi, içerik listesi, kullanım önerisi,
+          saklama koşulları ve kampanya metinleri eklenebilir.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="modalAddBtn">Sepete Ekle</button>
+          <button class="btn btn-ghost" id="modalMoreBtn">Detayları Düzenle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const menuBtn = document.getElementById('menuBtn');
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    const categorySelect = document.getElementById('categorySelect');
+    const sortSelect = document.getElementById('sortSelect');
+    const resetFilters = document.getElementById('resetFilters');
+    const chipBar = document.getElementById('chipBar');
+    const productGrid = document.getElementById('productGrid');
+    const productCards = Array.from(productGrid.querySelectorAll('.product-card'));
+    const overlay = document.getElementById('overlay');
+    const drawer = document.getElementById('drawer');
+    const cartBtn = document.getElementById('cartBtn');
+    const closeCart = document.getElementById('closeCart');
+    const cartItems = document.getElementById('cartItems');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotal = document.getElementById('cartTotal');
+    const clearCartBtn = document.getElementById('clearCartBtn');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const productModal = document.getElementById('productModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalBadge = document.getElementById('modalBadge');
+    const modalAddBtn = document.getElementById('modalAddBtn');
+    const contactForm = document.getElementById('contactForm');
+
+    const state = {
+      cart: [],
+      activeCategory: 'all',
+      activeChip: 'all',
+      currentProduct: null
+    };
+
+    const money = (n) => new Intl.NumberFormat('tr-TR').format(n) + ' ₺';
+
+    function openNav() {
+      nav.classList.toggle('open');
+    }
+
+    function openDrawer() {
+      overlay.classList.add('show');
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      overlay.classList.remove('show');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function openModal() {
+      overlay.classList.add('show');
+      productModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      productModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModalWindow() {
+      productModal.classList.remove('open');
+      if (!drawer.classList.contains('open')) {
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+      productModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function updateCounts() {
+      const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
+      const total = state.cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+      cartCount.textContent = count;
+      cartTotal.textContent = money(total);
+      renderCart();
+    }
+
+    function addToCart(title, price) {
+      const existing = state.cart.find((item) => item.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        state.cart.push({ title, price, qty: 1 });
+      }
+      updateCounts();
+      openDrawer();
+    }
+
+    function renderCart() {
+      if (!state.cart.length) {
+        cartItems.innerHTML = '<p class="muted">Sepet boş. Ürün kartlarından ürün ekleyin.</p>';
+        return;
+      }
+
+      cartItems.innerHTML = state.cart.map((item, index) => `
+        <div class="cart-item">
+          <div class="cart-thumb" aria-hidden="true"></div>
+          <div>
+            <p class="cart-title">${item.title}</p>
+            <p class="cart-sub">Birim fiyat: ${money(item.price)} • Adet: ${item.qty}</p>
+          </div>
+          <div class="right">
+            <div class="qty" aria-label="Miktar ayarı">
+              <button data-action="minus" data-index="${index}">−</button>
+              <span>${item.qty}</span>
+              <button data-action="plus" data-index="${index}">+</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterProducts() {
+      const term = searchInput.value.toLowerCase().trim();
+      const category = categorySelect.value;
+      const chip = state.activeChip;
+
+      let visible = productCards.filter((card) => {
+        const name = card.dataset.name.toLowerCase();
+        const cat = card.dataset.category;
+        const matchesSearch = !term || name.includes(term);
+        const matchesCategory = category === 'all' || cat === category;
+        const matchesChip = chip === 'all' || cat === chip;
+        return matchesSearch && matchesCategory && matchesChip;
+      });
+
+      const sort = sortSelect.value;
+      visible.sort((a, b) => {
+        const an = a.dataset.name;
+        const bn = b.dataset.name;
+        const ap = Number(a.dataset.price);
+        const bp = Number(b.dataset.price);
+        if (sort === 'name') return an.localeCompare(bn, 'tr');
+        if (sort === 'priceLow') return ap - bp;
+        if (sort === 'priceHigh') return bp - ap;
+        return 0;
+      });
+
+      productCards.forEach((card) => card.style.display = 'none');
+      visible.forEach((card) => {
+        card.style.display = 'flex';
+        productGrid.appendChild(card);
+      });
+    }
+
+    function setActiveChip(value) {
+      state.activeChip = value;
+      document.querySelectorAll('.chip').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.chip === value);
+      });
+      filterProducts();
+    }
+
+    function openProductModal(card) {
+      const title = card.dataset.name;
+      const price = Number(card.dataset.price);
+      const category = card.dataset.category;
+
+      state.currentProduct = { title, price, category };
+      modalTitle.textContent = title;
+      modalDesc.textContent = 'Bu ürün açıklaması alanı boş bırakıldı. Buraya analiz raporu, hasat tarihi, içerik bilgisi, gramaj seçenekleri ve kullanım notları eklenebilir.';
+      modalCategory.textContent = category;
+      modalPrice.textContent = money(price);
+      modalBadge.textContent = category.toUpperCase();
+      modalAddBtn.textContent = `${money(price)} ile Sepete Ekle`;
+      openModal();
+    }
+
+    productGrid.addEventListener('click', (e) => {
+      const addBtn = e.target.closest('.addBtn');
+      const card = e.target.closest('.product-card');
+
+      if (addBtn) {
+        addToCart(addBtn.dataset.title, Number(addBtn.dataset.price));
+        return;
+      }
+
+      if (card && !e.target.closest('button')) {
+        openProductModal(card);
+      }
+    });
+
+    cartItems.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-action]');
+      if (!btn) return;
+      const index = Number(btn.dataset.index);
+      const action = btn.dataset.action;
+      const item = state.cart[index];
+      if (!item) return;
+      if (action === 'plus') item.qty += 1;
+      if (action === 'minus') item.qty -= 1;
+      if (item.qty <= 0) state.cart.splice(index, 1);
+      updateCounts();
+    });
+
+    menuBtn.addEventListener('click', openNav);
+    cartBtn.addEventListener('click', openDrawer);
+    closeCart.addEventListener('click', closeDrawer);
+    closeModal.addEventListener('click', closeModalWindow);
+    overlay.addEventListener('click', () => {
+      closeDrawer();
+      closeModalWindow();
+    });
+
+    searchBtn.addEventListener('click', () => {
+      searchInput.focus();
+    });
+
+    searchInput.addEventListener('input', filterProducts);
+    categorySelect.addEventListener('change', (e) => {
+      state.activeCategory = e.target.value;
+      filterProducts();
+    });
+    sortSelect.addEventListener('change', filterProducts);
+    resetFilters.addEventListener('click', () => {
+      searchInput.value = '';
+      categorySelect.value = 'all';
+      sortSelect.value = 'featured';
+      setActiveChip('all');
+      filterProducts();
+    });
+
+    chipBar.addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      setActiveChip(chip.dataset.chip);
+    });
+
+    modalAddBtn.addEventListener('click', () => {
+      if (!state.currentProduct) return;
+      addToCart(state.currentProduct.title, state.currentProduct.price);
+      closeModalWindow();
+    });
+
+    document.getElementById('modalMoreBtn').addEventListener('click', () => {
+      alert('Bu alan daha sonra ürün detay düzenleme veya ürün sayfasına yönlendirme için kullanılabilir.');
+    });
+
+    clearCartBtn.addEventListener('click', () => {
+      state.cart = [];
+      updateCounts();
+    });
+
+    checkoutBtn.addEventListener('click', () => {
+      if (!state.cart.length) {
+        alert('Sepet boş.');
+        return;
+      }
+      const summary = state.cart.map((item) => `${item.title} x ${item.qty}`).join('\n');
+      alert('Sipariş Özeti:\n\n' + summary + '\n\nToplam: ' + cartTotal.textContent);
+    });
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Form demo olarak hazır. Gerçek gönderim için backend bağlantısı gerekir.');
+      contactForm.reset();
+    });
+
+    document.querySelectorAll('.faq-q').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        item.classList.toggle('open');
+      });
+    });
+
+    // Active navigation highlight on scroll
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const navLinks = Array.from(document.querySelectorAll('.nav a'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+      });
+    }, { threshold: 0.35 });
+
+    sections.forEach((section) => observer.observe(section));
+
+    // Close mobile nav when link clicked
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+      });
+    });
+
+    // Escape key handlers
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+        closeModalWindow();
+        nav.classList.remove('open');
+      }
+    });
+
+    // Initialize
+    filterProducts();
+    updateCounts();
+  </script>
 </body>
 </html>
