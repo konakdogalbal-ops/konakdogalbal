@@ -104,8 +104,10 @@
     }
 
     .header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
       backdrop-filter: blur(18px);
       background: rgba(255, 251, 244, 0.72);
@@ -1329,7 +1331,7 @@
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" style="padding-top: 120px;">
     <section class="hero" id="hero">
       <div class="container hero-grid">
         <article class="hero-card hero-main">
@@ -1441,149 +1443,101 @@
         </div>
 
         <div class="grid" id="productGrid" aria-live="polite">
-          <article class="product-card" data-name="Konak Süzme Bal" data-category="suzme" data-price="340">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">SÜZME BAL</div></div>
+          <article class="product-card" data-name="Süzme Bal" data-category="suzme" data-price="800">
+            <div class="product-media" style="background-image:url('Süzme bal.jpeg'); background-size:cover; background-position:center;">
+              <div class="placeholder-jar" style="opacity:0;"><div class="placeholder-tag">SÜZME BAL</div></div>
             </div>
             <div class="product-body">
               <div class="product-meta">
                 <span class="badge ok">Doğal</span>
                 <span class="badge brand">1 KG</span>
               </div>
-              <h3>Konak Süzme Bal</h3>
-              <p>Burada ürünün bölgesi, aroması, çiçek florası, analiz raporu ve kullanım önerileri yer alabilir.</p>
+              <h3>Süzme Bal</h3>
+              <p>Ürün açıklaması alanı boş bırakıldı. Buraya içerik, analiz ve saklama bilgisi eklenebilir.</p>
               <div class="product-footer">
-                <div class="price"><strong>₺340</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Süzme Bal" data-price="340">Sepete Ekle</button>
+                <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Süzme Bal" data-price="800">Sepete Ekle</button>
               </div>
             </div>
           </article>
 
-          <article class="product-card" data-name="Konak Karakovan Bal" data-category="karakovan" data-price="520">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">KARAKOVAN</div></div>
+          <article class="product-card" data-name="Kara Kovan Balı" data-category="karakovan" data-price="800">
+            <div class="product-media" style="background-image:url('Kara Kovan Balı.jpeg'); background-size:cover; background-position:center;">
+              <div class="placeholder-jar" style="opacity:0;"><div class="placeholder-tag">KARAKOVAN</div></div>
             </div>
             <div class="product-body">
               <div class="product-meta">
                 <span class="badge ok">Katkısız</span>
                 <span class="badge warn">Özel Seri</span>
               </div>
-              <h3>Konak Karakovan Bal</h3>
-              <p>Yüksek kalite, yoğun kıvam ve doğal aroma için hazırlanmış detaylı ürün sayfası örneği.</p>
+              <h3>Kara Kovan Balı</h3>
+              <p>Ürün açıklaması alanı boş bırakıldı. Buraya hasat bilgisi ve detaylar eklenebilir.</p>
               <div class="product-footer">
-                <div class="price"><strong>₺520</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Karakovan Bal" data-price="520">Sepete Ekle</button>
+                <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Kara Kovan Balı" data-price="800">Sepete Ekle</button>
               </div>
             </div>
           </article>
 
-          <article class="product-card" data-name="Konak Petekli Bal" data-category="petekli" data-price="410">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">PETEKLİ BAL</div></div>
+          <article class="product-card" data-name="Petek Bal" data-category="petekli" data-price="800">
+            <div class="product-media" style="background-image:url('Petek Bal.jpeg'); background-size:cover; background-position:center;">
+              <div class="placeholder-jar" style="opacity:0;"><div class="placeholder-tag">PETEKLİ BAL</div></div>
             </div>
             <div class="product-body">
               <div class="product-meta">
                 <span class="badge brand">Popüler</span>
                 <span class="badge ok">Doğal petek</span>
               </div>
-              <h3>Konak Petekli Bal</h3>
-              <p>Ürün özellikleri, gramaj seçeneği, saklama koşulları ve teslimat bilgileri için kart yapısı hazır.</p>
+              <h3>Petek Bal</h3>
+              <p>Ürün açıklaması alanı boş bırakıldı. Buraya gramaj ve saklama koşulları eklenebilir.</p>
               <div class="product-footer">
-                <div class="price"><strong>₺410</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Petekli Bal" data-price="410">Sepete Ekle</button>
+                <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Petek Bal" data-price="800">Sepete Ekle</button>
               </div>
             </div>
           </article>
 
-          <article class="product-card" data-name="Konak Arı Poleni" data-category="urun" data-price="260">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">POLEN</div></div>
-            </div>
-            <div class="product-body">
-              <div class="product-meta">
-                <span class="badge warn">Arı ürünü</span>
-                <span class="badge ok">Taze</span>
-              </div>
-              <h3>Konak Arı Poleni</h3>
-              <p>Arı ürünleri için ayrı kategori, filtre, açıklama ve kullanım önerileri alanları eklenmiştir.</p>
-              <div class="product-footer">
-                <div class="price"><strong>₺260</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Arı Poleni" data-price="260">Sepete Ekle</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-name="Konak Propolis" data-category="urun" data-price="290">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">PROPOLİS</div></div>
-            </div>
-            <div class="product-body">
-              <div class="product-meta">
-                <span class="badge brand">Konsantre</span>
-                <span class="badge ok">Arı ürünü</span>
-              </div>
-              <h3>Konak Propolis</h3>
-              <p>Kurumsal ürün kartları için açık bırakılmış metin alanları, görseller ve ek bilgi blokları mevcut.</p>
-              <div class="product-footer">
-                <div class="price"><strong>₺290</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Propolis" data-price="290">Sepete Ekle</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-name="Konak Bal Paketi" data-category="paket" data-price="990">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">PAKET</div></div>
-            </div>
-            <div class="product-body">
-              <div class="product-meta">
-                <span class="badge warn">Avantajlı</span>
-                <span class="badge brand">Set</span>
-              </div>
-              <h3>Konak Bal Paketi</h3>
-              <p>Birden fazla ürünü tek sepet altında gösteren paket yapısı, kampanya alanı ile birlikte kullanılabilir.</p>
-              <div class="product-footer">
-                <div class="price"><strong>₺990</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Bal Paketi" data-price="990">Sepete Ekle</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-name="Konak Çiçek Balı" data-category="suzme" data-price="315">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">ÇİÇEK BALI</div></div>
-            </div>
-            <div class="product-body">
-              <div class="product-meta">
-                <span class="badge ok">Hafif aroma</span>
-                <span class="badge brand">1 KG</span>
-              </div>
-              <h3>Konak Çiçek Balı</h3>
-              <p>Ürün açıklamalarında çiçek florası, kıvam, renk, saklama ve servis önerileri için alan mevcuttur.</p>
-              <div class="product-footer">
-                <div class="price"><strong>₺315</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Çiçek Balı" data-price="315">Sepete Ekle</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-name="Konak Yayla Balı" data-category="suzme" data-price="360">
-            <div class="product-media">
-              <div class="placeholder-jar"><div class="placeholder-tag">YAYLA BALI</div></div>
+          <article class="product-card" data-name="Yayla Kasnak Balı" data-category="paket" data-price="800">
+            <div class="product-media" style="background-image:url('Yayla Kasnak Balı.jpeg'); background-size:cover; background-position:center;">
+              <div class="placeholder-jar" style="opacity:0;"><div class="placeholder-tag">YAYLA</div></div>
             </div>
             <div class="product-body">
               <div class="product-meta">
                 <span class="badge warn">Yüksek rakım</span>
-                <span class="badge ok">Doğal</span>
+                <span class="badge ok">Kasnak</span>
               </div>
-              <h3>Konak Yayla Balı</h3>
-              <p>Yayla balı için ek açıklama, üretim bilgisi, hasat dönemi ve laboratuvar notları eklenebilir.</p>
+              <h3>Yayla Kasnak Balı</h3>
+              <p>Ürün açıklaması alanı boş bırakıldı. Buraya aroma ve üretim bölgesi eklenebilir.</p>
               <div class="product-footer">
-                <div class="price"><strong>₺360</strong><span>Boş fiyat alanı</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Konak Yayla Balı" data-price="360">Sepete Ekle</button>
+                <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Yayla Kasnak Balı" data-price="800">Sepete Ekle</button>
               </div>
             </div>
           </article>
+
+          <article class="product-card" data-name="Doğal Kaya Balı" data-category="paket" data-price="800">
+            <div class="product-media" style="background-image:url('Doğal Kaya Balı.jpeg'); background-size:cover; background-position:center;">
+              <div class="placeholder-jar" style="opacity:0;"><div class="placeholder-tag">KAYA BALI</div></div>
+            </div>
+            <div class="product-body">
+              <div class="product-meta">
+                <span class="badge brand">Özel Seri</span>
+                <span class="badge ok">Doğal</span>
+              </div>
+              <h3>Doğal Kaya Balı</h3>
+              <p>Ürün açıklaması alanı boş bırakıldı. Buraya kıvam ve analiz bilgisi eklenebilir.</p>
+              <div class="product-footer">
+                <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
+                <button class="btn btn-primary btn-small addBtn" data-title="Doğal Kaya Balı" data-price="800">Sepete Ekle</button>
+              </div>
+            </div>
+          </article>
+
+          
+
+          
+
+          
         </div>
       </div>
     </section>
@@ -1870,7 +1824,7 @@
         <strong id="cartTotal">₺0</strong>
       </div>
       <div class="cart-actions">
-        <button class="btn btn-primary" id="checkoutBtn">Sipariş Özeti Oluştur</button>
+        <button class="btn btn-primary" id="checkoutBtn">Sipariş Ver (WhatsApp)<\/button>
         <button class="btn btn-ghost" id="clearCartBtn">Sepeti Temizle</button>
       </div>
     </div>
@@ -2156,8 +2110,18 @@
         alert('Sepet boş.');
         return;
       }
-      const summary = state.cart.map((item) => `${item.title} x ${item.qty}`).join('\n');
-      alert('Sipariş Özeti:\n\n' + summary + '\n\nToplam: ' + cartTotal.textContent);
+
+      const lines = state.cart.map((item) => `• ${item.title} x ${item.qty} = ${money(item.qty * item.price)}`);
+      const total = state.cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+
+      const message = `Merhaba, Konak Doğal Bal üzerinden sipariş vermek istiyorum.%0A%0A` +
+        lines.join('%0A') +
+        `%0A%0AToplam: ${money(total)}%0A%0AAd Soyad: %0ATelefon: %0AAdres: %0ANot: `;
+
+      const phoneNumber = '905449250253'; // WhatsApp numaranı buraya yaz (örn: 905551112233)
+      const url = `https://wa.me/${phoneNumber}?text=${message}`;
+
+      window.open(url, '_blank');
     });
 
     contactForm.addEventListener('submit', (e) => {
