@@ -2,119 +2,103 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Konak Doğal Bal</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
 body{
-  width:100vw;
-  height:100vh;
+  background:#111;
+  color:white;
+  overflow-y:auto;
+}
+
+/* ÜST KAYAN YAZI */
+.top-bar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:black;
   overflow:hidden;
+  z-index:10;
 }
 
-/* ARKA PLAN */
-body::before{
-  content:"";
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background:url("arkaplan.jpg") center/cover no-repeat;
-  filter: blur(8px);
-  transform: scale(1.1);
-  z-index:-2;
+.top-text{
+  white-space:nowrap;
+  display:inline-block;
+  padding:10px;
+  color:#00ffcc;
+  font-weight:bold;
+  animation:scroll 10s linear infinite;
+  text-shadow:0 0 10px #00ffcc;
 }
 
-body::after{
-  content:"";
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.35);
-  z-index:-1;
-}
-
-/* SAYFA */
-.page{
-  display:none;
-  width:100%;
-  height:100%;
-  padding-top:60px;
-}
-
-.active{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+@keyframes scroll{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(100%)}
 }
 
 /* BAŞLIK */
-h1{
-  color:white;
-  text-shadow:0 0 10px black;
-  font-size:32px;
-  margin-bottom:20px;
-}
-
-/* BUTON */
-.btn{
-  width:260px;
-  padding:15px;
-  margin:8px;
-  border:none;
-  border-radius:15px;
-  background:linear-gradient(45deg,#ff9900,#ff6600);
-  color:white;
+.header{
+  margin-top:50px;
+  text-align:center;
+  font-size:28px;
   font-weight:bold;
-  font-size:18px;
+  animation:fadeIn 2s ease;
 }
 
-/* ÜRÜN KART */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(-20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ÜRÜNLER */
 .products{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
 }
 
 .card{
-  background:rgba(255,255,255,0.85);
-  padding:10px;
-  border-radius:15px;
-  text-align:center;
-  cursor:pointer;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  overflow:hidden;
   transition:0.3s;
-  border:3px solid transparent;
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover{
+  transform:scale(1.03);
 }
 
 .card img{
   width:100%;
-  height:110px;
+  height:180px;
   object-fit:cover;
-  border-radius:10px;
 }
 
-/* SEÇİLİNCE YEŞİL ANİMASYON */
-.selected{
-  border:3px solid #00ff66;
-  box-shadow:0 0 15px #00ff66;
-  transform:scale(1.05);
+.card h2{
+  padding:10px;
 }
 
-/* SLIDER */
-.slider img{
-  width:300px;
-  height:200px;
-  object-fit:cover;
-  border-radius:15px;
+.card button{
+  width:100%;
+  padding:15px;
+  border:none;
+  background:#25D366;
+  color:white;
+  font-size:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+}
+
+.whatsapp-icon{
+  width:22px;
 }
 
 </style>
@@ -122,131 +106,66 @@ h1{
 
 <body>
 
-<!-- ANA -->
-<div class="page active" id="home">
-
-  <h1>🍯 Konak Doğal Bal Mağazası</h1>
-
-  <button class="btn" onclick="show('products')">🛒 Ürünlerimiz</button>
-  <button class="btn" onclick="show('about')">👤 Biz Kimiz</button>
-
+<div class="top-bar">
+  <div class="top-text">🚚 2000 TL ve üzeri KARGO BEDAVA 🚚</div>
 </div>
 
-<!-- ÜRÜNLER -->
-<div class="page" id="products">
+<div class="header">🍯 Konak Doğal Bal</div>
 
-  <h1>🛒 Ürün Seç</h1>
+<div class="products">
 
-  <div class="products">
-
-    <div class="card" onclick="selectProduct(this,'Petek Bal')">
-      <img src="Petek Bal.jpeg">
-      <p>Petek Bal</p>
-    </div>
-
-    <div class="card" onclick="selectProduct(this,'Süzme Bal')">
-      <img src="Süzme bal.jpeg">
-      <p>Süzme Bal</p>
-    </div>
-
-    <div class="card" onclick="selectProduct(this,'Kara Kovan Balı')">
-      <img src="Kara Kovan Balı.jpeg">
-      <p>Kara Kovan</p>
-    </div>
-
-    <div class="card" onclick="selectProduct(this,'Doğal Kaya Balı')">
-      <img src="Doğal Kaya Balı.jpeg">
-      <p>Doğal Kaya</p>
-    </div>
-
-    <div class="card" onclick="selectProduct(this,'Yayla Kasnak Balı')">
-      <img src="Yayla Kasnak Balı.jpeg">
-      <p>Yayla Kasnak</p>
-    </div>
-
+  <div class="card">
+    <img src="Petek Bal.jpeg">
+    <h2>Premium Petek Bal</h2>
+    <button onclick="order('Premium Petek Bal')">
+      <img class="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      Sipariş Ver
+    </button>
   </div>
 
-  <select id="kg" class="btn">
-    <option value="">KG Seç</option>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-    <option>6</option>
-    <option>7</option>
-    <option>8</option>
-    <option>9</option>
-    <option>10</option>
-  </select>
-
-  <button class="btn" onclick="order()">📲 Sipariş Ver</button>
-  <button class="btn" onclick="show('home')">⬅ Geri</button>
-
-</div>
-
-<!-- BİZ KİMİZ -->
-<div class="page" id="about">
-
-  <h1>👤 Biz Kimiz</h1>
-
-  <div class="slider">
-    <img id="img" src="1.jpg">
+  <div class="card">
+    <img src="Süzme bal.jpeg">
+    <h2>Doğal Süzme Bal</h2>
+    <button onclick="order('Doğal Süzme Bal')">
+      <img class="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      Sipariş Ver
+    </button>
   </div>
 
-  <button class="btn" onclick="next()">Sonraki ➡</button>
-  <button class="btn" onclick="show('home')">⬅ Geri</button>
+  <div class="card">
+    <img src="Kara Kovan Balı.jpeg">
+    <h2>Özel Kara Kovan Balı</h2>
+    <button onclick="order('Kara Kovan Balı')">
+      <img class="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      Sipariş Ver
+    </button>
+  </div>
+
+  <div class="card">
+    <img src="Doğal Kaya Balı.jpeg">
+    <h2>Doğal Kaya Balı</h2>
+    <button onclick="order('Doğal Kaya Balı')">
+      <img class="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      Sipariş Ver
+    </button>
+  </div>
+
+  <div class="card">
+    <img src="Yayla Kasnak Balı.jpeg">
+    <h2>Yayla Kasnak Balı</h2>
+    <button onclick="order('Yayla Kasnak Balı')">
+      <img class="whatsapp-icon" src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      Sipariş Ver
+    </button>
+  </div>
 
 </div>
 
 <script>
-
-let selectedProduct = "";
-
-function show(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+function order(product){
+  let message = `Merhaba, ${product} siparişi vermek istiyorum.`;
+  window.open("https://wa.me/905449250253?text=" + encodeURIComponent(message),"_blank");
 }
-
-/* ÜRÜN SEÇİM */
-function selectProduct(el,name){
-  document.querySelectorAll(".card").forEach(c=>c.classList.remove("selected"));
-  el.classList.add("selected");
-  selectedProduct = name;
-}
-
-/* WHATSAPP SİPARİŞ */
-function order(){
-
-  let kg = document.getElementById("kg").value;
-
-  if(!selectedProduct){
-    alert("Lütfen ürün seç");
-    return;
-  }
-
-  if(!kg){
-    alert("Lütfen KG seç");
-    return;
-  }
-
-  let message = `Merhaba, ${kg} KG ${selectedProduct} siparişi vermek istiyorum.`;
-
-  window.open(
-    "https://wa.me/905449250253?text=" + encodeURIComponent(message),
-    "_blank"
-  );
-}
-
-/* SLIDER */
-let imgs=["1.jpg","2.jpg","3.jpg"];
-let i=0;
-
-function next(){
-  i=(i+1)%imgs.length;
-  document.getElementById("img").src=imgs[i];
-}
-
 </script>
 
 </body>
