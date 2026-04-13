@@ -1059,23 +1059,19 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .cart-thumb {
-      width: 76px;
-      aspect-ratio: 1;
-      border-radius: 18px;
-      background: linear-gradient(145deg, #f7dfaa, #d49c3a 60%, #995f1f);
-      position: relative;
-      overflow: hidden;
-    }
+  .cart-thumb {
+  width: 76px;
+  height: 76px; /* aspect-ratio yerine net yükseklik verdik */
+  border-radius: 14px;
+  background: #f3e5d0; /* Resim yüklenene kadar duracak hafif renk */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .cart-thumb::before {
-      content: "";
-      position: absolute;
-      inset: 14px 18px 10px 18px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.12);
-      border: 2px solid rgba(255,255,255,0.24);
-    }
+    
 
     .cart-title { margin: 0 0 6px; font-weight: 800; }
     .cart-sub { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
@@ -1441,7 +1437,7 @@
               <p>süzme bal.</p>
               <div class="product-footer">
                 <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Süzme Bal" data-price="800">Sepete Ekle</button>
+                <button class="btn btn-primary btn-small addBtn" data-title="Süzme Bal" data-price="800" data-image="Süzme bal.jpeg">Sepete Ekle</button>
               </div>
             </div>
           </article>
@@ -1459,7 +1455,7 @@
               <p>kara kovan balı.</p>
               <div class="product-footer">
                 <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Kara Kovan Balı" data-price="800">Sepete Ekle</button>
+<button class="btn btn-primary btn-small addBtn" data-title="Kara Kovan Balı" data-price="800" data-image="Kara Kovan Balı.jpeg">Sepete Ekle</button>
               </div>
             </div>
           </article>
@@ -1477,7 +1473,7 @@
               <p>petek bal.</p>
               <div class="product-footer">
                 <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Petek Bal" data-price="800">Sepete Ekle</button>
+                <button class="btn btn-primary btn-small addBtn" data-title="Petek Bal" data-price="800" data-image="Petek Bal.jpeg">Sepete Ekle</button>
               </div>
             </div>
           </article>
@@ -1495,7 +1491,7 @@
               <p>yayla kasnak balı.</p>
               <div class="product-footer">
                 <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Yayla Kasnak Balı" data-price="800">Sepete Ekle</button>
+                <button class="btn btn-primary btn-small addBtn" data-title="Yayla Kasnak Balı" data-price="800" data-image="Yayla Kasnak Balı.jpeg">Sepete Ekle</button>
               </div>
             </div>
           </article>
@@ -1513,7 +1509,7 @@
               <p>doğal kaya balı</p>
               <div class="product-footer">
                 <div class="price"><strong>₺800</strong><span>Sabit fiyat</span></div>
-                <button class="btn btn-primary btn-small addBtn" data-title="Doğal Kaya Balı" data-price="800">Sepete Ekle</button>
+                <button class="btn btn-primary btn-small addBtn" data-title="Doğal Kaya Balı" data-price="800" data-image="Doğal Kaya Balı.jpeg">Sepete Ekle</button>
               </div>
             </div>
           </article>
@@ -1915,16 +1911,16 @@
       renderCart();
     }
 
-    function addToCart(title, price) {
-      const existing = state.cart.find((item) => item.title === title);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        state.cart.push({ title, price, qty: 1 });
-      }
-      updateCounts();
-      openDrawer();
-    }
+   function addToCart(title, price, image) {
+  const existing = state.cart.find((item) => item.title === title);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    state.cart.push({ title, price, image, qty: 1 });
+  }
+  updateCounts();
+  openDrawer();
+}
 
     function renderCart() {
       if (!state.cart.length) {
@@ -1934,7 +1930,9 @@
 
       cartItems.innerHTML = state.cart.map((item, index) => `
         <div class="cart-item">
-          <div class="cart-thumb" aria-hidden="true"></div>
+          <div class="cart-thumb" aria-hidden="true">
+  <img src="${item.image}" alt="${item.title}" style="width:100%; height:100%; object-fit:cover;">
+</div>
           <div>
             <p class="cart-title">${item.title}</p>
             <p class="cart-sub">Birim fiyat: ${money(item.price)} • Adet: ${item.qty}</p>
@@ -2010,10 +2008,10 @@
       const addBtn = e.target.closest('.addBtn');
       const card = e.target.closest('.product-card');
 
-      if (addBtn) {
-        addToCart(addBtn.dataset.title, Number(addBtn.dataset.price));
-        return;
-      }
+     if (addBtn) {
+  addToCart(addBtn.dataset.title, Number(addBtn.dataset.price), addBtn.dataset.image);
+  return;
+}
 
       if (card && !e.target.closest('button')) {
         openProductModal(card);
