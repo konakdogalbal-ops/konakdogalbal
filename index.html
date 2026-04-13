@@ -512,16 +512,16 @@
 
     /* Filter bar */
     .filter-shell {
-      position: relative;
-            z-index: 900;
-      margin-bottom: 16px;
-      padding: 12px;
-      border-radius: 24px;
-      background: rgba(255, 251, 244, 0.82);
-      border: 1px solid rgba(116, 86, 43, 0.10);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(16px);
-    }
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 24px;
+  background: rgba(255, 251, 244, 0.82);
+  border: 1px solid rgba(116, 86, 43, 0.10);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(16px);
+}
 
     .filters {
       display: grid;
@@ -1284,6 +1284,15 @@
 
     .muted { color: var(--muted); }
     .grid-gap { gap: 18px; }
+/* MOBİLDE FİLTRE BAR SABİT KALMA SORUNU - KESİN FIX */
+@media (max-width: 9999px) {
+  .filter-shell {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    z-index: 1 !important;
+  }
+}
   </style>
 </head>
 <body>
