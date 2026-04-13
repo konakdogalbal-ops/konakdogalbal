@@ -1004,19 +1004,18 @@
     }
 
     .drawer {
-      position: fixed;
-      right: -420px;
-      top: 0;
-      height: 100vh;
-      width: min(420px, calc(100vw - 34px));
-      background: #fffaf2;
-      box-shadow: -26px 0 60px rgba(0,0,0,0.16);
-      z-index: 1500;
-      transition: right 280ms ease;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-    }
-
+  position: fixed;
+  right: -420px;
+  top: 0;
+  height: 100dvh; /* vh yerine dvh yaptık */
+  width: min(420px, calc(100vw - 34px));
+  background: #fffaf2;
+  box-shadow: -26px 0 60px rgba(0,0,0,0.16);
+  z-index: 1500;
+  transition: right 280ms ease;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Başlık, Orta, Alt yapısını korur */
+}
     .drawer.open { right: 0; }
 
     .drawer-head,
@@ -1026,10 +1025,13 @@
     }
 
     .drawer-foot {
-      border-top: 1px solid rgba(116, 86, 43, 0.10);
-      border-bottom: 0;
-      background: rgba(255,255,255,0.72);
-    }
+  padding: 18px;
+  border-top: 1px solid rgba(116, 86, 43, 0.10);
+  background: #ffffff; /* Arkası opak olsun ki ürünler altından geçmesin */
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
 
     .drawer-head {
       display: flex;
@@ -1041,11 +1043,13 @@
     .drawer-head h3 { margin: 0; }
 
     .drawer-body {
-      padding: 12px 18px 18px;
-      overflow: auto;
-      display: grid;
-      gap: 12px;
-    }
+  padding: 12px 18px 18px;
+  overflow-y: auto; /* Dikeyde kaydırma açar */
+  display: flex; /* Daha stabil bir dizilim sağlar */
+  flex-direction: column;
+  gap: 12px;
+  max-height: calc(100dvh - 200px); /* Üst ve alt başlığı çıkarıp kalan alanı kullanır */
+}
 
     .cart-item {
       background: #fff;
@@ -1261,8 +1265,17 @@
       .visual-panel { min-height: 330px; }
       .hero-card, .info-card, .contact-card { border-radius: 24px; }
       .filter-shell { top: 90px; }
-      .cart-item { grid-template-columns: 70px 1fr; }
-      .cart-item .right { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; }
+      .cart-item { 
+    grid-template-columns: 60px 1fr; 
+    gap: 12px; 
+    align-items: center; 
+}
+.cart-item .right { 
+    grid-column: 2; 
+    display: flex; 
+    justify-content: flex-start; 
+    margin-top: 4px; 
+}
     }
 
     /* Tiny utilities */
