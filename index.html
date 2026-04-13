@@ -1051,28 +1051,29 @@
   max-height: calc(100dvh - 200px); /* Üst ve alt başlığı çıkarıp kalan alanı kullanır */
 }
 
-    .cart-item {
-      background: #fff;
-      border: 1px solid rgba(116, 86, 43, 0.10);
-      border-radius: 20px;
-      padding: 14px;
-      display: grid;
-      grid-template-columns: 76px 1fr auto;
-      gap: 12px;
-      align-items: center;
-      box-shadow: var(--shadow-soft);
-    }
+   .cart-item {
+  background: #fff;
+  border: 1px solid rgba(116, 86, 43, 0.10);
+  border-radius: 20px;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 64px 1fr; /* Resim için 64px sabit yer ayırdık */
+  gap: 15px; /* Resim ve yazı arasına net boşluk koyduk */
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+}
 
-  .cart-thumb {
-  width: 76px;
-  height: 76px; /* aspect-ratio yerine net yükseklik verdik */
-  border-radius: 14px;
-  background: #f3e5d0; /* Resim yüklenene kadar duracak hafif renk */
+ .cart-thumb {
+  width: 64px; /* Genişliği 64px'e düşürdük */
+  height: 64px; /* Yüksekliği 64px'e düşürdük */
+  border-radius: 12px;
+  background: #f3e5d0;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0; /* KRİTİK: Yazı uzasa bile resmin ezilmesini engeller */
 }
 
     
@@ -1265,7 +1266,12 @@
       .visual-panel { min-height: 330px; }
       .hero-card, .info-card, .contact-card { border-radius: 24px; }
       .filter-shell { top: 90px; }
-      .cart-item { 
+      .cart-item .right { 
+    grid-column: 2; /* Miktar butonlarını resmin altına değil, 2. sütuna (yazı alanına) zorladık */
+    display: flex; 
+    justify-content: flex-start; 
+    margin-top: 5px;
+  } 
     grid-template-columns: 60px 1fr; 
     gap: 12px; 
     align-items: center; 
