@@ -1257,6 +1257,12 @@
     @media (max-width: 680px) {
       .topbar .row { justify-content: center; text-align: center; }
       .header-inner { gap: 12px; }
+.header {
+  position: absolute; /* Fixed yerine absolute yaparsan sayfa kayınca yukarıda kalır */
+}
+main {
+  padding-top: 80px !important; /* Header alanının boşluğunu azalttık */
+}
       .logo-text strong { font-size: 1rem; }
       .hero { padding-top: 18px; }
       .hero-main { padding: 22px; }
@@ -1265,7 +1271,12 @@
       .product-card { grid-column: span 12; }
       .visual-panel { min-height: 330px; }
       .hero-card, .info-card, .contact-card { border-radius: 24px; }
-      .filter-shell { top: 90px; }
+      .filter-shell { 
+  position: relative !important; 
+  top: 0 !important; 
+  box-shadow: none; /* Mobilde çok kaba durmaması için gölgeyi hafiflettik */
+  margin-top: 10px;
+}
       .cart-item .right { 
     grid-column: 2; /* Miktar butonlarını resmin altına değil, 2. sütuna (yazı alanına) zorladık */
     display: flex; 
