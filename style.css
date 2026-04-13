@@ -1,0 +1,101 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
+  background:linear-gradient(180deg,#0f0f0f,#1c1c1c);
+  color:white;
+}
+
+/* 🔥 TOP BAR */
+.top-bar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:black;
+  overflow:hidden;
+  z-index:100;
+}
+
+.top-track{
+  white-space:nowrap;
+  animation:flow 8s linear infinite;
+  padding:10px;
+  color:#00ffcc;
+  font-weight:bold;
+  text-shadow:0 0 10px #00ffcc;
+}
+
+@keyframes flow{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
+}
+
+/* 🔝 HEADER */
+.header{
+  padding-top:60px;
+  text-align:center;
+  padding-bottom:20px;
+}
+
+.header h1{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.header button{
+  padding:12px 25px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(45deg,#ff9900,#ff6600);
+  color:white;
+}
+
+/* 🎯 HERO */
+.hero{
+  text-align:center;
+  padding:40px 20px;
+}
+
+.hero h2{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.hero button{
+  margin-top:20px;
+  padding:12px 25px;
+  background:#25D366;
+  border:none;
+  border-radius:10px;
+  color:white;
+}
+
+/* 🛒 PRODUCTS */
+.products{
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* 📲 WHATSAPP */
+.whatsapp-bar{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#25D366;
+  padding:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+}
+
+.whatsapp-bar img{
+  width:25px;
+}
